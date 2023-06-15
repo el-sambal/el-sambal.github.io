@@ -11,9 +11,27 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
   </head>
-  <body>
-katex.render(String.raw`c = \pm\sqrt{a^2 + b^2}`, element, {
-    throwOnError: false
-});
+  <body style="text-align:center;padding-left:200px;padding-right:200px;padding-top:10px;">
+      <h1> A nice spherical integral </h2>
+      <b>Question: calculate \(\iiint_E xe^{x^2+y^2+z^2}\,dV\) where \(E\) is the region with \(x^2+y^2+z^2\leq4\) and \(0\leq y\leq x\).</b>
+      <hr>
+      <b>Solution:</b> the equation \(x^2+y^2+z^2\leq4\) looks like the equation for a sphere. Thus, this integral is probably going to be easiest when we use spherical coordinates.
+
+      <br>
+      <br>
+      First, we observe that the radius of the sphere is \(\sqrt{4}=2\), so \(\rho\) should run from \(0\) to \(2\). Also, \(\phi\) should run from \(0\) to \(\pi\) (we consider all polar angles, from all the way up till all the way down). But now we must think about the constraint \(0\leq y\leq x\). It means that we only want to consider the region below/above the \(xy\)-plane which is bounded by \(y=0\) and \(y=x\) (for positive \(x\) and \(y\)). In the \(xy\)-plane, the line \(y=x\) makes an angle of \(\theta=\frac{\pi}{4}\) with the \(x\)-axis. So, we should let \(\theta\) run from \(0\) to \(\frac{\pi}{4}\). We can then write the region of integration as
+      $$E=\left\{(\rho,\theta,\phi) \mid 0\leq\rho\leq2,~0\leq\theta\leq\frac{\pi}{4},~0\leq\phi\leq\pi\right\}$$
+
+        Since in spherical coordinates we have \(x=\rho\sin\phi\cos\theta\) and \(x^2+y^2+z^2=\rho^2\), we can rewrite the integrand as \(\rho\sin\phi\cos\theta \,e^{\rho^2}\). Our integral then becomes $$\iiint_E xe^{x^2+y^2+z^2}\,dV = \int_0^{\pi}\int_0^{\pi/4}\int_0^2 \rho\sin\phi\cos\theta\,e^{\rho^2}\red{\rho^2\sin\phi}\,d\rho\,d\theta\,d\phi$$
+        Here \(\red{\rho^2\sin\phi}\) is the Jacobian for spherical coordinates.
+
+        <br><br>
+        Well, now we just have to solve this integral. We can rewrite our integral into the product of three "simple" (i.e., single) integrals:
+        $$\iiint_E xe^{x^2+y^2+z^2}\,dV=\green{\left(\int_{0}^{\pi}\sin^2\phi\,d\phi\right)}\textcolor{#F39525}{\left(\int_0^{\pi/4}\cos\theta\,d\theta\right)}\red{\left(\int_0^2\rho^3\,e^{\rho^2}\,d\rho\right)}$$
+        Now we just have to solve these individual integrals and be done.
+
+        <br><br>
+        For the green one, we can use the trig identity \(~\sin^2\phi=\frac{1}{2}\left(1-\cos2\phi\right)\) to get
+        $$\green{\int_{0}^{\pi}\sin^2\phi\,d\phi=\frac{1}{2}\int_{0}^{\pi}(1-\cos2\phi)\,d\phi=\frac{\pi}{2}-\frac{1}{2}\left[\frac{1}{2}\sin2\phi\right]_{0}^{\pi}=\frac{\pi}{2}}$$
   </body>
 </html>
