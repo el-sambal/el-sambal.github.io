@@ -11,7 +11,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
   </head>
-  <body style="text-align:center;padding-left:200px;padding-right:200px;padding-top:10px;">
+  <body style="text-align:center;padding-left:200px;padding-right:200px;">
       <h1> A nice spherical integral </h2>
       <b>Question: calculate \(\iiint_E xe^{x^2+y^2+z^2}\,dV\) where \(E\) is the region with \(x^2+y^2+z^2\leq4\) and \(0\leq y\leq x\).</b>
       <hr>
@@ -33,5 +33,11 @@
         <br><br>
         For the green one, we can use the trig identity \(~\sin^2\phi=\frac{1}{2}\left(1-\cos2\phi\right)\) to get
         $$\green{\int_{0}^{\pi}\sin^2\phi\,d\phi=\frac{1}{2}\int_{0}^{\pi}(1-\cos2\phi)\,d\phi=\frac{\pi}{2}-\frac{1}{2}\left[\frac{1}{2}\sin2\phi\right]_{0}^{\pi}=\frac{\pi}{2}}$$
+
+        The red one is very nice, because you first need to sub \(u=\rho^2\) (such that \(du=2\rho \,d\rho\)), and then perform integration by parts:
+        $$\red{\int_0^2\rho^3\,e^{\rho^2}\,d\rho=\frac{1}{2}\int_{0^2}^{2^2}ue^u\,du=\frac{1}{2}\left(\left[ue^u\right]_0^4-\int_0^4e^u\,du\right)=\frac{1}{2}(4e^4-(e^4-1))=\frac{3e^4+1}{2}}$$
+
+        The orange integral is relatively doable (\(\textcolor{#F39525}{\int_0^{\pi/4}\cos\theta\,d\theta=\sin\frac{\pi}{4}-\sin0=\frac{1}{2}\sqrt2}\)), so the answer is
+        $$\iiint_E xe^{x^2+y^2+z^2}\,dV =\green{\left(\frac{\pi}{2}\right)}\textcolor{#F39525}{\left(\frac{1}{2}\sqrt{2}\right)}\red{\left(\frac{3e^4+1}{2}\right)}=\boxed{\frac{\pi\sqrt2}{8}(3e^4+1)}$$
   </body>
 </html>
