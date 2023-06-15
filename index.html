@@ -11,4 +11,9 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
   </head>
+  <body>
+katex.render(String.raw`c = \pm\sqrt{a^2 + b^2}`, element, {
+    throwOnError: false
+});
+  </body>
 </html>
