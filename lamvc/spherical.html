@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly -->
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+  <body style="text-align:center;padding-left:17%;padding-right:17%;">
+      <h1>Summary of spherical coordinates</h1>
+      The spherical coordinate system is a coordinate system to describe points \((\rho,\theta,\phi)\) in 3D using \(\rho\), the radial distance, \(\theta\), the azimuthal angle, and \(\phi\), the polar angle, as in the sketch:
+      <br><image src="spherical.png" /><br>
+      So here, \(\theta\) is the angle in the \(xy\)-plane measured from the \(x\)-axis to the \(y\)-axis, and \(\phi\) is the angle "down" from the \(z\)-axis.
+      
+      <!--<br><br>As an example, say that we consider all points for which \(x^2+y^2+z^2\leq25\). These are all points that are at most a radius \(\sqrt{25}=5\) away from the origin, so we have \(0\leq\rho\leq5\). Furthermore, \(\theta\) can run the full circle in the \(xy\)-plane: \(0\leq\theta\leq2\pi\). As for \(\phi\), it has to run from "all the way up" (\(\phi=0\)) to "all the way down" (\(\phi=\pi\)), so \(0\leq\phi\leq\pi\). So the region \(x^2+y^2+z^2\leq25\) can also be written as $$\{(\rho,\theta,\phi) \mid 0\leq\rho\leq5,~ 0\leq\theta\leq2\pi,~ 0\leq\phi\leq\pi\}$$.-->
+
+      Now, these are the fundamental equations that are valid for spherical coordinates:
+      $$\boxed{x=\rho\sin\phi\cos\theta \qquad y=\rho\sin\phi\sin\theta \qquad z=\rho\cos\phi}$$
+      $$\boxed{x^2+y^2+z^2=\rho^2}$$
+
+      And whereas we have \(dV=dx\,dy\,dz\) in Cartesian coordinates, in spherical coordinates we have $$\boxed{dV=\red{\rho^2\sin\phi}\,d\rho\,d\theta\,d\phi}$$
+      <b>So, never forget to write this Jacobian of \(\red{\rho^2\sin\phi}\)!</b>
+      <br><br>
+      (It is similar to the factor \(\red r\) that we have in polar coordinates: \(dA=\red{r}\,dr\,d\theta\), here this \(\red r\) is also a Jacobian)
+      <hr><hr>
+      <h2> Example 1 </h2>
+      <b>Question: calculate \(\displaystyle\iiint_E xe^{x^2+y^2+z^2}\,dV\) where \(E\) is the region with \(x^2+y^2+z^2\leq4\) and \(0\leq y\leq x\).</b>
+      <hr>
+      <b>Solution:</b> the inequality \(x^2+y^2+z^2\leq4\) looks like a sphere (actually, ball). Thus, this integral is probably going to be easiest when we use spherical coordinates.
+
+      <br>
+      <br>
+      First, we observe that the radius of the sphere is \(\sqrt{4}=2\), so \(\rho\) should run from \(0\) to \(2\). Also, \(\phi\) should run from \(0\) to \(\pi\) (we consider all polar angles, from all the way up till all the way down). But now we must think about the constraint \(0\leq y\leq x\). It means that we only want to consider the region below/above the \(xy\)-plane which is bounded by \(y=0\) and \(y=x\) (for positive \(x\) and \(y\)). In the \(xy\)-plane, the line \(y=x\) makes an angle of \(\theta=\frac{\pi}{4}\) with the \(x\)-axis. So, we should let \(\theta\) run from \(0\) to \(\frac{\pi}{4}\). We can then write the region of integration as
+      $$E=\left\{(\rho,\theta,\phi) \mid 0\leq\rho\leq2,~0\leq\theta\leq\frac{\pi}{4},~0\leq\phi\leq\pi\right\}$$
+
+        Since in spherical coordinates we have \(x=\rho\sin\phi\cos\theta\) and \(x^2+y^2+z^2=\rho^2\), we can rewrite the integrand as \(\rho\sin\phi\cos\theta \,e^{\rho^2}\). Our integral then becomes $$\iiint_E xe^{x^2+y^2+z^2}\,dV = \int_0^{\pi}\int_0^{\pi/4}\int_0^2 \rho\sin\phi\cos\theta\,e^{\rho^2}\red{\rho^2\sin\phi}\,d\rho\,d\theta\,d\phi$$
+        Here \(\red{\rho^2\sin\phi}\) is the Jacobian for spherical coordinates.
+
+        <br><br>
+        Well, now we just have to solve this integral. We can rewrite our integral into the product of three "simple" (i.e., single) integrals:
+        $$\iiint_E xe^{x^2+y^2+z^2}\,dV=\green{\left(\int_{0}^{\pi}\sin^2\phi\,d\phi\right)}\textcolor{#F39525}{\left(\int_0^{\pi/4}\cos\theta\,d\theta\right)}\red{\left(\int_0^2\rho^3\,e^{\rho^2}\,d\rho\right)}$$
+        Now we just have to solve these individual integrals and be done.
+
+        <br><br>
+        For the green one, we can use the trig identity \(~\sin^2\phi=\frac{1}{2}\left(1-\cos2\phi\right)\) to get
+        $$\green{\int_{0}^{\pi}\sin^2\phi\,d\phi=\frac{1}{2}\int_{0}^{\pi}(1-\cos2\phi)\,d\phi=\frac{\pi}{2}-\frac{1}{2}\left[\frac{1}{2}\sin2\phi\right]_{0}^{\pi}=\frac{\pi}{2}}$$
+
+        The red one is very nice, because you first need to sub \(u=\rho^2\) (such that \(du=2\rho \,d\rho\)), and then perform integration by parts:
+        $$\red{\int_0^2\rho^3\,e^{\rho^2}\,d\rho=\frac{1}{2}\int_{0^2}^{2^2}ue^u\,du=\frac{1}{2}\left(\left[ue^u\right]_0^4-\int_0^4e^u\,du\right)=\frac{1}{2}(4e^4-(e^4-1))=\frac{3e^4+1}{2}}$$
+
+        The orange integral is relatively doable (\(\textcolor{#F39525}{\int_0^{\pi/4}\cos\theta\,d\theta=\sin\frac{\pi}{4}-\sin0=\frac{1}{2}\sqrt2}\)), so the answer is
+        $$\iiint_E xe^{x^2+y^2+z^2}\,dV =\green{\left(\frac{\pi}{2}\right)}\textcolor{#F39525}{\left(\frac{1}{2}\sqrt{2}\right)}\red{\left(\frac{3e^4+1}{2}\right)}=\boxed{\frac{\pi\sqrt2}{8}(3e^4+1)}$$
+  </body>
+</html>
