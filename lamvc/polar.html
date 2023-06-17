@@ -11,7 +11,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
   </head>
-  <body style="text-align:center;padding-left:17%;padding-right:17%;">
+  <body style="text-align:center;padding-left:17%;padding-right:17%;font-size:18px;">
       <a href="index.html">Go back</a>
       <h1>Summary of polar coordinates</h1>
       The polar coordinate system is a coordinate system to describe points \((r,\theta)\) in 2D using \(r\), the radial distance, and \(\theta\), the azimuthal angle.
@@ -28,10 +28,45 @@
       <hr><hr>
       <hr><hr>
       <h2> Example 1 </h2>
-      <b>Question: calculate the volume of the solid body bounded by the function \(z=f(x,y)=x^4+2x^2y^2+y^4\) and the \(xy\)-plane above the circular region in the \(xy\)-plane given in the plot:</b>
+      <b>Question: calculate the volume of the solid body bounded by the function \(z=f(x,y)=y\sqrt{x^2+y^2}\) and the \(xy\)-plane above the circular region in the \(xy\)-plane given in the plot:</b>
       <br><image src="polar-ex1-graph.png" width=700/><br>
       <hr>
-      <b>Solution:</b> 
+      <b>Solution:</b> we want to calculate \(\displaystyle V=\iint_Dy\sqrt{x^2+y^2}dA\), where \(D\) is the region of integration. But this region of integration happens to be a bit complicated.
 
+      <br><br>First we translate the problem to polar coordinates. The integrand is \(y\sqrt{x^2+y^2}=r\sin(\theta)\sqrt{r^2}=r^2\sin\theta\). Furthermore, the red curve is given by $$\sqrt{x^2+y^2}=3+\frac{2x}{\sqrt{x^2+y^2}}\quad\red{\rightsquigarrow}\quad\sqrt{r^2}=3+\frac{2r\cos\theta}{\sqrt{r^2}}\quad\red{\rightsquigarrow}\quad r=3+2\cos\theta$$
+
+      Let's now try to write the region of integration. We see that \(\theta\) goes from \(0\) to \(\pi\).<br><br> But how about \(r\)? Its lower bound is \(1\) everywhere (because \(x^2+y^2=1\) is a circle with radius \(1\), and this is where we "start"). But the upper bound is not given by a single function. At the right in the graph, the upper bound of \(r\) is given by the red curve (\(r=3+2\cos\theta\)), but at the left, it's given by the blue circle with \(r=2\).
+
+      <br><br> We <i>could</i> write down the region of integration this way:
+      $$D=\{(r,\theta) \mid 1\leq r\leq \max(2,~3+2\cos\theta),~0\leq\theta\leq\pi\}$$
+
+      But this would give us the integral \(\displaystyle\int_0^\pi\int_1^{\max(2,~3+2\cos\theta)} r^4 \red r\,dr\,d\theta\) which looks not-so-nice.
+
+      <br><br>So, let's use a new idea, which is to split up the region into two regions:
+
+      <br><image src="polar-ex1-graph2.png" width=500/><br>
+
+      We see that in the region \(D_1\), we have \(1\leq r\leq3+2\cos\theta\), and in region \(D_2\), we have \(1\leq r\leq2\). The split-angle \(\theta_{\text{split}}\) as in the picture can be calculated by setting equal the radii of the curves that we want to find the intersection of:
+      $$\red{3+2\cos\theta_{\text{split}}}=\blue2\quad\Rightarrow\quad\cos\theta_{\text{split}}=-\frac{1}{2}\quad\Rightarrow\quad \theta_{\text{split}}=\frac{2\pi}{3}$$
+
+
+      So for formality, let's write the regions of integration...
+      $$D_1=\{(r,\theta)\mid0\leq\theta\leq\frac{2\pi}{3},~1\leq r\leq3+2\cos\theta\}$$
+      $$D_2=\{(r,\theta)\mid\frac{2\pi}{3}\leq\theta\leq\pi,~1\leq r\leq2\}$$
+      $$D=D_1\cup D_2$$
+
+      But look! Now we can just split up our integral and write it like this:
+
+      \begin{align}
+      V&=\iint_D f(x,y)dA=\iint_{D_1}f(x,y)dA+\iint_{D_2}f(x,y)dA\nonumber\\
+      &\qquad\textcolor{#de8231}{\text{\scriptsize ($*$ The integrand was $r^2\sin\theta$, also do not forget that $dA=\red r\,dr\,d\theta$ $*$)}}\nonumber\\
+        &=\int_0^{2\pi/3}\int_1^{3+2\cos\theta}(r^2\sin\theta)r\,dr\,d\theta+\int_{2\pi/3}^{\pi}\int_{1}^2(r^2\sin\theta) r\,dr\,d\theta\nonumber\\
+         &=\int_0^{2\pi/3}\sin\theta\int_1^{3+2\cos\theta}r^3dr\,d\theta+\int_{2\pi/3}^{\pi}\sin\theta d\theta\int_{1}^2r^3 dr\nonumber\\
+         &=\int_0^{2\pi/3}\sin\theta\left[\frac{r^4}{4}\right]_1^{3+2\cos\theta}d\theta+\left(\left[-\cos\theta\right]_{2\pi/3}^{\pi} \left[\frac{r^4}{4}\right]_1^2\right)\nonumber\\
+         &=\frac{1}{4}\int_0^{2\pi/3}\sin\theta\left((3+2\cos\theta)^4-1\right)d\theta+\left(\left[-\cos\theta\right]_{2\pi/3}^{\pi} \left[\frac{r^4}{4}\right]_1^2\right)\nonumber\\
+         &=\frac{1}{4}\left[-\frac{1}{10}(3+2\cos\theta)^5+\cos\theta\right]_0^{2\pi/3}+\frac{15}{8}=\frac{1}{4}\left(-\frac{37}{10}+\frac{3115}{10}\right)+\frac{15}{8}=\boxed{\frac{3153}{40}}\nonumber\\
+    \end{align}
+
+    Conclusion: the volume is \(\boxed{\frac{3153}{40}}\)
   </body>
 </html>
