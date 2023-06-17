@@ -12,6 +12,7 @@
         onload="renderMathInElement(document.body);"></script>
   </head>
   <body style="text-align:center;padding-left:17%;padding-right:17%;">
+      <a href="index.html">Go back</a>
       <h1>Summary of spherical coordinates</h1>
       The spherical coordinate system is a coordinate system to describe points \((\rho,\theta,\phi)\) in 3D using \(\rho\), the radial distance, \(\theta\), the azimuthal angle, and \(\phi\), the polar angle, as in the sketch:
       <br><image src="spherical.png" /><br>
@@ -24,14 +25,15 @@
       $$\boxed{x^2+y^2+z^2=\rho^2}$$
 
       And whereas we have \(dV=dx\,dy\,dz\) in Cartesian coordinates, in spherical coordinates we have $$\boxed{dV=\red{\rho^2\sin\phi}\,d\rho\,d\theta\,d\phi}$$
-      <b>So, never forget to write this Jacobian of \(\red{\rho^2\sin\phi}\)!</b>
+      <b>So, never forget to write this factor of \(\red{\rho^2\sin\phi}\)! (It's called a Jacobian)</b>
       <br><br>
       (It is similar to the factor \(\red r\) that we have in polar coordinates: \(dA=\red{r}\,dr\,d\theta\), here this \(\red r\) is also a Jacobian)
+      <hr><hr>
       <hr><hr>
       <h2> Example 1 </h2>
       <b>Question: calculate \(\displaystyle\iiint_E xe^{x^2+y^2+z^2}\,dV\) where \(E\) is the region with \(x^2+y^2+z^2\leq4\) and \(0\leq y\leq x\).</b>
       <hr>
-      <b>Solution:</b> the inequality \(x^2+y^2+z^2\leq4\) looks like a sphere (actually, ball). Thus, this integral is probably going to be easiest when we use spherical coordinates.
+      <b>Solution:</b> the inequality \(x^2+y^2+z^2\leq4\) describes a sphere (actually, a ball, since the inner volume is also included and not only its surface). Anyway, this integral is probably going to be easiest when we use spherical coordinates.
 
       <br>
       <br>
