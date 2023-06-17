@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly -->
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+  <body style="text-align:center;padding-left:17%;padding-right:17%;font-size:18px;">
+      <a href="index.html">Go back</a>
+      <h1>Summary of polar coordinates</h1>
+      The polar coordinate system is a coordinate system to describe points \((r,\theta)\) in 2D using \(r\), the radial distance, and \(\theta\), the azimuthal angle.
+      <br><image src="polar.png" width=1000/><br>
+      Here, \(\theta\) is the angle measured from the \(x\)-axis to the \(y\)-axis, so anticlockwise. The point \(P\) in the sketch is the point \((r,\theta)\) with \(r=1\) and \(\theta=\frac{\pi}{3}\).
+      
+      <br>
+      Now, when solving integrals with polar coordinates, it is crucial to remember these identities:
+      $$\boxed{x=r\cos\theta \qquad y=r\sin\theta}$$
+      $$\boxed{x^2+y^2=r^2}$$
+
+      And whereas we have \(dA=dx\,dy\) in Cartesian coordinates, in polar coordinates we have $$\boxed{dA=\red{r}\,dr\,d\theta}$$
+      <b>So, never forget to write this factor \(\red{r}\)!</b> (It's called the Jacobian for the change from cartesian coordinates to polar coordinates...)
+
+      <br><br>So, if we have the polar region
+      $$D=\{(r,\theta)\mid \alpha\leq\theta\leq\beta,~ h_1(\theta)\leq r\leq h_2(\theta)\}$$
+      Then the integral can be written as
+      $$\boxed{\iint_Df(x,y)dA=\int_\alpha^\beta\int_{h_1(\theta)}^{h_2(\theta)}f(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta}$$
+      (Notice that \(f(r\cos\theta,r\sin\theta)\) just means: \(f(x,y)\), but written in polar coordinates.)
+      <hr><hr>
+      <hr><hr>
+      <h1>Summary of spherical coordinates</h1>
+      The spherical coordinate system is a coordinate system to describe points \((\rho,\theta,\phi)\) in 3D using \(\rho\), the radial distance, \(\theta\), the azimuthal angle, and \(\phi\), the polar angle, as in the sketch:
+      <br><image src="spherical.png" /><br>
+      So here, \(\theta\) is the angle in the \(xy\)-plane measured from the \(x\)-axis to the \(y\)-axis, and \(\phi\) is the angle "down" from the \(z\)-axis.
+      
+      <!--<br><br>As an example, say that we consider all points for which \(x^2+y^2+z^2\leq25\). These are all points that are at most a radius \(\sqrt{25}=5\) away from the origin, so we have \(0\leq\rho\leq5\). Furthermore, \(\theta\) can run the full circle in the \(xy\)-plane: \(0\leq\theta\leq2\pi\). As for \(\phi\), it has to run from "all the way up" (\(\phi=0\)) to "all the way down" (\(\phi=\pi\)), so \(0\leq\phi\leq\pi\). So the region \(x^2+y^2+z^2\leq25\) can also be written as $$\{(\rho,\theta,\phi) \mid 0\leq\rho\leq5,~ 0\leq\theta\leq2\pi,~ 0\leq\phi\leq\pi\}$$.-->
+
+      Now, these are the fundamental equations that are valid for spherical coordinates:
+      $$\boxed{x=\rho\sin\phi\cos\theta \qquad y=\rho\sin\phi\sin\theta \qquad z=\rho\cos\phi}$$
+      $$\boxed{x^2+y^2+z^2=\rho^2}$$
+
+      And whereas we have \(dV=dx\,dy\,dz\) in Cartesian coordinates, in spherical coordinates we have $$\boxed{dV=\red{\rho^2\sin\phi}\,d\rho\,d\theta\,d\phi}$$
+      <b>So, never forget to write this factor of \(\red{\rho^2\sin\phi}\)! (It's a Jacobian)</b>
+      <br><br>
+      (It is similar to the factor \(\red r\) that we have in polar coordinates: \(dA=\red{r}\,dr\,d\theta\), here this \(\red r\) is also a Jacobian)
+
+      <br><br>So, if we have the region in spherical coordinates
+      $$D=\{(\rho,\theta,\phi)\mid a\leq\rho\leq b,~ \alpha\leq\theta\leq\beta,~ c\leq\phi\leq d\}$$
+      Then the integral can be written as
+      $$\boxed{\iiint_Ef(x,y,z)dV=\int_c^d\int_\alpha^\beta\int_{a}^{b}f^*(\rho,\theta,\phi)\,\rho^2\sin\phi\,dr\,d\theta\,d\phi}$$
+      where \(f^*(\rho,\theta,\phi)\) just means: \(f(x,y,z)\), but written in spherical coordinates.
+      <br><div style=font-size:14px>That is: \(f^*(\rho,\theta,\phi)=f(\rho\sin\phi\cos\theta,~\rho\sin\phi\sin\theta,~\rho\cos\theta)\)</div>
+      <hr><hr>
+      <hr><hr>
+  </body>
+</html>
