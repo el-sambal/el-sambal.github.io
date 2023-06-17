@@ -28,8 +28,23 @@
       <hr><hr>
       <hr><hr>
       <h2> Example 1 </h2>
-      <b>Question: calculate the volume of the solid body bounded by the function \(z=f(x,y)=y\sqrt{x^2+y^2}\) and the \(xy\)-plane above the circular region in the \(xy\)-plane given in the plot:</b>
-      <br><image src="polar-ex1-graph.png" width=700/><br>
+      <b>Question: calculate the volume of the solid body bounded by the function \(z=f(x,y)=x^4+2x^2y^2+y^4\) and the \(xy\)-plane above the circular region in the \(xy\)-plane given in the plot:</b>
+      <br><image src="polar-ex1-graph.png" width=400/><br>
+      <hr>
+      <b>Solution:</b> the region in the plot is just half a "donut":
+      $$D=\{(r,\theta)\mid1\leq r\leq 2,~-\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2}\}$$
+      (The bounds for theta are such because we start "in the bottom" at \(\theta=-\frac{\pi}{2}\) and end "at the top" at \(\theta=\frac{\pi}{2}\). Remember that \(\theta\) increases counterclockwise)
+
+      <br><br>The integrand is \(x^4+2x^2y^2+y^4=(x^2+y^2)^2=(r^2)^2=r^4\), so we can write the integral to calculate the volume:
+
+      $$V=\iint_D \blue{f(x,y)}\red{dA}=\int_{-\pi/2}^{\pi/2}\int_1^2 \blue{r^4} \red{r\,dr\,d\theta}=\int_{-\pi/2}^{\pi/2}d\theta\int_1^2 r^5 dr=\pi\left[\frac{1}{6}r^6\right]_1^2=\boxed{\frac{21}{2}\pi}$$
+      Conclusion: the volume is \(\frac{21}{2}\pi\).
+
+      <hr><hr>
+      <hr><hr>
+      <h2> Example 2 </h2>
+      <b>Question: calculate the volume of the solid body bounded by the function \(z=f(x,y)=y\sqrt{x^2+y^2}\) and the \(xy\)-plane above the region in the \(xy\)-plane given in the plot:</b>
+      <br><image src="polar-ex2-graph.png" width=700/><br>
       <hr>
       <b>Solution:</b> we want to calculate \(\displaystyle V=\iint_Dy\sqrt{x^2+y^2}dA\), where \(D\) is the region of integration. But this region of integration happens to be a bit complicated.
 
@@ -40,11 +55,11 @@
       <br><br> We <i>could</i> write down the region of integration this way:
       $$D=\{(r,\theta) \mid 1\leq r\leq \max(2,~3+2\cos\theta),~0\leq\theta\leq\pi\}$$
 
-      But this would give us the integral \(\displaystyle\int_0^\pi\int_1^{\max(2,~3+2\cos\theta)} r^4 \red r\,dr\,d\theta\) which looks not-so-nice.
+      But this would give us the integral \(\displaystyle\int_0^\pi\int_1^{\max(2,~3+2\cos\theta)} (r^2\sin\theta)  r\,dr\,d\theta\) which looks not-so-nice.
 
       <br><br>So, let's use a new idea, which is to split up the region into two regions:
 
-      <br><image src="polar-ex1-graph2.png" width=500/><br>
+      <br><image src="polar-ex2-graph2.png" width=500/><br>
 
       We see that in the region \(D_1\), we have \(1\leq r\leq3+2\cos\theta\), and in region \(D_2\), we have \(1\leq r\leq2\). The split-angle \(\theta_{\text{split}}\) as in the picture can be calculated by setting equal the radii of the curves that we want to find the intersection of:
       $$\red{3+2\cos\theta_{\text{split}}}=\blue2\quad\Rightarrow\quad\cos\theta_{\text{split}}=-\frac{1}{2}\quad\Rightarrow\quad \theta_{\text{split}}=\frac{2\pi}{3}$$
@@ -64,7 +79,8 @@
          &=\int_0^{2\pi/3}\sin\theta\int_1^{3+2\cos\theta}r^3dr\,d\theta+\int_{2\pi/3}^{\pi}\sin\theta d\theta\int_{1}^2r^3 dr\nonumber\\
          &=\int_0^{2\pi/3}\sin\theta\left[\frac{r^4}{4}\right]_1^{3+2\cos\theta}d\theta+\left(\left[-\cos\theta\right]_{2\pi/3}^{\pi} \left[\frac{r^4}{4}\right]_1^2\right)\nonumber\\
          &=\frac{1}{4}\int_0^{2\pi/3}\sin\theta\left((3+2\cos\theta)^4-1\right)d\theta+\left(\left[-\cos\theta\right]_{2\pi/3}^{\pi} \left[\frac{r^4}{4}\right]_1^2\right)\nonumber\\
-         &=\frac{1}{4}\left[-\frac{1}{10}(3+2\cos\theta)^5+\cos\theta\right]_0^{2\pi/3}+\frac{15}{8}=\frac{1}{4}\left(-\frac{37}{10}+\frac{3115}{10}\right)+\frac{15}{8}=\boxed{\frac{3153}{40}}\nonumber\\
+         &=\frac{1}{4}\left[-\frac{1}{10}(3+2\cos\theta)^5+\cos\theta\right]_0^{2\pi/3}+\frac{15}{8}\nonumber\\
+         &=\frac{1}{4}\left(-\frac{37}{10}+\frac{3115}{10}\right)+\frac{15}{8}=\boxed{\frac{3153}{40}}\nonumber\\
     \end{align}
 
     Conclusion: the volume is \(\boxed{\frac{3153}{40}}\)
