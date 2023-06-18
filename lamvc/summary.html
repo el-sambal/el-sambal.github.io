@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-<!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly -->
 <html>
   <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
-
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <link rel="stylesheet" href=style.css>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
   </head>
-  <body style="text-align:center;padding-left:17%;padding-right:17%;font-size:18px;">
+  <body>
       <a href="index.html">Go back</a>
+      <hr><hr><hr><hr><hr><hr>
+      <div style="font-size:48px"><b>Integration</b></div>
+      <h1>Summary of double integrals in Cartesian coordinates</h1>
+      (Cartesian coordinates are just \((x,y)\) in 2D or \((x,y,z)\) in 3D)
+      <br><br>
+      If you have a rectangular region of integration \(D=\{(x,y)\mid a\leq x\leq b,~ c\leq y\leq d\}\)
+      Then: $$\iint_D f(x,y)dA=\int_a^b\int_c^df(x,y)dy\,dx=\int_c^d\int_a^bf(x,y)dx\,dy$$
+
+      <br><br>
+      For a <b>Type I</b> region of integration:
+      $$D=\{(x,y)\mid a\leq x\leq b,~ g_1(x)\leq y\leq g_2(x)\}$$
+      $$\iint_D f(x,y)dA=\int_a^b\int_{g_1(x)}^{g_2(x)}f(x,y)dydx$$
+
+      <br><br>
+      For a <b>Type II</b> region of integration:
+      $$D=\{(x,y)\mid c\leq y\leq d,~ h_1(y)\leq x\leq h_2(y)\}$$
+      $$\iint_D f(x,y)dA=\int_c^d\int_{h_1(y)}^{h_2(y)}f(x,y)dxdy$$
+
+      <br><br><image src="regions.png" width=800/><br>
+
+      <br>
+      <b>With double integrals you can calculate the volume of solid bodies. If the question is: "calculate the volume of the solid body that lies between the surface \(z=f(x,y)=\dots\) and the \(xy\)-plane above the region \(D\)", then that volume is calculated by \(\displaystyle\iint_Df(x,y)dA\).</b><br>Sometimes you can solve the integral in Cartesian coordinates and sometimes you have to convert to polar coordinates (see below).<br> (And of course you can do a lot more with double integrals, but the exam usually asks about volumes of bodies...)
+
+      <hr><hr>
+      <hr><hr>
       <h1>Summary of double integrals in polar coordinates</h1>
       The polar coordinate system is a coordinate system to describe points \((r,\theta)\) in 2D using \(r\), the radial distance, and \(\theta\), the azimuthal angle.
       <br><image src="polar-crop.png" width=450/><br>
@@ -29,7 +50,7 @@
       <br><br>So, if we have the polar region
       $$D=\{(r,\theta)\mid \alpha\leq\theta\leq\beta,~ h_1(\theta)\leq r\leq h_2(\theta)\}$$
       Then the integral can be written as
-      $$\boxed{\iint_Df(x,y)dA=\int_\alpha^\beta\int_{h_1(\theta)}^{h_2(\theta)}f(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta}$$
+      $$\boxed{\iint_Df(x,y)dA=\int_\alpha^\beta\int_{h_1(\theta)}^{h_2(\theta)}f(r\cos\theta,r\sin\theta)\,\red r\,dr\,d\theta}$$
       (Notice that \(f(r\cos\theta,r\sin\theta)\) just means: \(f(x,y)\), but written in polar coordinates.)
       <hr><hr>
       <hr><hr>
@@ -38,12 +59,15 @@
       Cartesian coordinates are "normal" coordinates, i.e., \((x,y,z)\). Sometimes you need to integrate over a 3D region which is expressed in Cartesian coordinates. This is actually very similar to doing double integrals in Cartesian coordinates, except we now have three integrals instead of two.
 
       <br><br> For Cartesian coordinates, we have $$dV=dx\,dy\,dz$$
-      You can even put the \(dx\), \(dy\) and \(dz\) in any order that you like (or need). So nothing special is going on here.
+      You can put the \(dx\), \(dy\) and \(dz\) in any order that you like (or need). So nothing special is going on here.
+      An example triple integral (that you would evaluate in Cartesian coordinates) is $$\int_0^3\int_0^{z^2}\int_0^{y-z}(3x-2y)\,dx\,dy\,dz$$
+      which would correspond to the region of integration $$E=\{(x,y,z)\mid0\leq z\leq3,~0\leq y\leq z^2,~ 0\leq x\leq y-z\}$$
+      Notice that the preferred order of integration can depend on how your region is defined.
       <hr><hr>
       <hr><hr>
 
 
-      <h1>Summary of cylindrical coordinates</h1>
+      <h1>Summary of triple integrals in cylindrical coordinates</h1>
       The cylindrical coordinate system is a coordinate system to describe points \((r,\theta,z)\) in 3D. Here \(r\) and \(\theta\) are the polar coordinates of the projection of the point onto the \(xy\)-plane, and \(z\) is the height of the point.
       <br><image src="cylindrical.png" width=300px/><br>
       
@@ -60,7 +84,7 @@
       <hr><hr>
       <hr><hr>
 
-      <h1>Summary of spherical coordinates</h1>
+      <h1>Summary of triple integrals in spherical coordinates</h1>
       The spherical coordinate system is a coordinate system to describe points \((\rho,\theta,\phi)\) in 3D using \(\rho\), the radial distance, \(\theta\), the azimuthal angle, and \(\phi\), the polar angle, as in the sketch:
       <br><image src="spherical.png" width=300px/><br>
       So here, \(\theta\) is the angle in the \(xy\)-plane measured from the \(x\)-axis to the \(y\)-axis, and \(\phi\) is the angle "down" from the \(z\)-axis.
