@@ -13,7 +13,7 @@
   </head>
   <body style="text-align:center;padding-left:17%;padding-right:17%;font-size:18px;">
       <a href="index.html">Go back</a>
-      <h1>Summary of polar coordinates</h1>
+      <h1>Summary of double integrals in polar coordinates</h1>
       The polar coordinate system is a coordinate system to describe points \((r,\theta)\) in 2D using \(r\), the radial distance, and \(\theta\), the azimuthal angle.
       <br><image src="polar-crop.png" width=450/><br>
       Here, \(\theta\) is the angle measured from the \(x\)-axis to the \(y\)-axis, so anticlockwise. For example, the point \(P\) in the sketch is the point \((r,\theta)\) with \(r=1\) and \(\theta=\frac{\pi}{3}\).
@@ -33,6 +33,33 @@
       (Notice that \(f(r\cos\theta,r\sin\theta)\) just means: \(f(x,y)\), but written in polar coordinates.)
       <hr><hr>
       <hr><hr>
+
+      <h1>Summary of triple integrals in Cartesian coordinates</h1>
+      Cartesian coordinates are "normal" coordinates, i.e., \((x,y,z)\). Sometimes you need to integrate over a 3D region which is expressed in Cartesian coordinates. This is actually very similar to doing double integrals in Cartesian coordinates, except we now have three integrals instead of two.
+
+      <br><br> For Cartesian coordinates, we have $$dV=dx\,dy\,dz$$
+      You can even put the \(dx\), \(dy\) and \(dz\) in any order that you like (or need). So nothing special is going on here.
+      <hr><hr>
+      <hr><hr>
+
+
+      <h1>Summary of cylindrical coordinates</h1>
+      The cylindrical coordinate system is a coordinate system to describe points \((r,\theta,z)\) in 3D. Here \(r\) and \(\theta\) are the polar coordinates of the projection of the point onto the \(xy\)-plane, and \(z\) is the height of the point.
+      <br><image src="cylindrical.png" width=300px/><br>
+      
+      Since cylindrical coordinates are just "polar coordinates with a height", there is nothing fundamentally new; for cylindrical coordinates we have:
+      $$\boxed{x=r\cos\theta \qquad y=r\sin\theta \qquad z=z}$$
+      $$\boxed{x^2+y^2=r^2}$$
+
+      And whereas we have \(dV=dx\,dy\,dz\) in Cartesian coordinates, in cylindrical coordinates we have $$\boxed{dV=\red{r}\,dz\,dr\,d\theta}$$
+      You see? It's the same \(\red r\) as for normal polar coordinates (where \(dA=\red r\,dr\,d\theta\)).
+
+      <br><br>So, if we have the region in cylindrical coordinates, then the integral can be written as (with the appropriate bounds, of course)
+      $$\boxed{\iiint_Ef(x,y,z)dV=\int_{\dots}^{\dots}\int_{\dots}^{\dots}\int_{\dots}^{\dots}f^*(r,\theta,z)\,r\,dz\,dr\,d\theta}$$
+      where \(f^*(r,\theta,z)\) just means: \(f(x,y,z)\), but written in cylindrical coordinates.
+      <hr><hr>
+      <hr><hr>
+
       <h1>Summary of spherical coordinates</h1>
       The spherical coordinate system is a coordinate system to describe points \((\rho,\theta,\phi)\) in 3D using \(\rho\), the radial distance, \(\theta\), the azimuthal angle, and \(\phi\), the polar angle, as in the sketch:
       <br><image src="spherical.png" width=300px/><br>
@@ -48,7 +75,7 @@
       <b>So, never forget to write this factor of \(\red{\rho^2\sin\phi}\)! (It's a Jacobian)</b>
 
       <br><br>So, if we have the region in spherical coordinates
-      $$D=\{(\rho,\theta,\phi)\mid a\leq\rho\leq b,~ \alpha\leq\theta\leq\beta,~ c\leq\phi\leq d\}$$
+      $$E=\{(\rho,\theta,\phi)\mid a\leq\rho\leq b,~ \alpha\leq\theta\leq\beta,~ c\leq\phi\leq d\}$$
       Then the integral can be written as
       $$\boxed{\iiint_Ef(x,y,z)dV=\int_c^d\int_\alpha^\beta\int_{a}^{b}f^*(\rho,\theta,\phi)\,\rho^2\sin\phi\,d\rho\,d\theta\,d\phi}$$
       where \(f^*(\rho,\theta,\phi)\) just means: \(f(x,y,z)\), but written in spherical coordinates.
