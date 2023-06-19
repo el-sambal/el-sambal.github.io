@@ -88,7 +88,7 @@
         <br><br><b>Solution:</b> as we know, there is no "nice" antiderivative to \(e^{-x^2}\). So it seems like we have to follow the hint... let's first evaluate \(\displaystyle\iint_{\mathbb{R}^2}e^{-x^2-y^2}dA\).
 
         <br>The region of integration is \(\mathbb{R}\times\mathbb{R}=\mathbb{R}^2\), i.e., <i>all</i> points \((x,y)\). In polar coordinates, we cover all points by letting \(\theta\) run from \(0\) to \(2\pi\) and setting \(0\leq r <\infty\). The integrand can be rewritten in polar coordinates; \(e^{-x^2-y^2}=e^{-r^2}\). So we get:
-                   $$\iint_{\mathbb{R}^2}e^{-x^2-y^2}dA=\int_0^{2\pi}\int_0^\infty e^{-r^2}r\,dr\,d\theta=\int_0^{2\pi}d\theta\int_0^\infty re^{-r^2}dr=2\pi\left[-\frac{1}{2}e^{-r^2}\right]_0^{\infty}=2\pi\left(0+\frac{1}{2}\right)=\pi$$
+                   $$\iint_{\mathbb{R}^2}e^{-x^2-y^2}dA=\int_0^{2\pi}\int_0^\infty e^{-r^2}r\,dr\,d\theta=\int_0^{2\pi}d\theta\int_0^\infty re^{-r^2}dr$$ $$=2\pi\left[-\frac{1}{2}e^{-r^2}\right]_0^{\infty}=2\pi\left(0+\frac{1}{2}\right)=\pi$$
 So we found that \(\displaystyle\int_{-\infty}^\infty\int_{-\infty}^{\infty}e^{-x^2-y^2}dydx=\pi\).
                    Now, we split the integral, using that \(e^{-x^2-y^2}=e^{-x^2}\cdot e^{-y^2}\):
                    $$\pi=\int_{-\infty}^\infty\int_{-\infty}^{\infty}e^{-x^2-y^2}dydx=\left(\int_{-\infty}^{\infty}e^{-x^2}dx\right)\left(\int_{-\infty}^{\infty}e^{-y^2}dy\right)$$
