@@ -15,7 +15,7 @@
 
         <b>Question:</b> you are given a linear transformation \(T: \mathbb{R}^3\to\mathbb{R}^3\), with
         \(\vec{\mathbf v}_1=\begin{bmatrix}1\\2\\3\end{bmatrix}\),
-        \(\vec{\mathbf v}_2=\begin{bmatrix}0\\-4\\2\end{bmatrix}\), 
+        \(\vec{\mathbf v}_2=\begin{bmatrix}0\\-4\\2\end{bmatrix}\),
         \(\vec{\mathbf v}_3=\begin{bmatrix}-1\\0\\0\end{bmatrix}\),
         \(\vec{\mathbf w}_1=\begin{bmatrix}2\kappa+3\\14\\6\xi+10\end{bmatrix}\),
         \(\vec{\mathbf w}_2=\begin{bmatrix}-4\kappa\\14\\4\xi-16\end{bmatrix}\) and
@@ -23,6 +23,8 @@
         where it is given that \(T({\vec{\mathbf{v}}_2})=\vec{\mathbf{w}}_1\), \(T({\vec{\mathbf{v}}_2})=\vec{\mathbf{w}}_2\) and \(T({\vec{\mathbf{v}}_3})=\vec{\mathbf{w}}_3\).
         <br><br>
         <b>(a):</b> Find the matrix \(A\) of this transformation (it should contain \(\kappa\) and \(\xi\)).
+        <br><br>
+        <b>(b):</b> TODO
 
         <hr>
         <b>Solution (a):</b> In order to find the matrix corresponding to the transformation, a useful thing to do it to determine to which vectors the unit vectors map. In other words, we want to find out what are \(T\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right)\), \(T\left(\begin{bmatrix}0\\1\\0\end{bmatrix}\right)\) and \(T\left(\begin{bmatrix}0\\0\\1\end{bmatrix}\right)\).<br>(The matrix \(A\) will then consist of these three column vectors glued together in order.)
@@ -33,6 +35,37 @@
         is almost a unit vector.
         <br>Since this is a linear transformation, we can say the following:
         $$T\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right) = -T\left(\begin{bmatrix}-1\\0\\0\end{bmatrix}\right) = -T\left(\vec{\mathbf v}_3\right)=-\begin{bmatrix}-3\\-1\\-2\end{bmatrix}=\red{\begin{bmatrix}3\\1\\2\end{bmatrix}}$$
-        That's our first transformed unit vector! We now already know that the first column of \(A\) must be \(\begin{bmatrix}3\\1\\2\end{bmatrix}\)
+        That's already our first transformed unit vector (of the first dimension)! We now know that the first column of \(A\) must be \(\begin{bmatrix}3\\1\\2\end{bmatrix}\).
+        <br><br>
+        Now we should do something with \(\vec{\mathbf v}_1\) and \(\vec{\mathbf v}_2\). We cannot immediately create another unit vector, so as an intermediate step, let's add \(\vec{\mathbf v}_1\) and \(\vec{\mathbf v}_3\) together such that we get more zeroes ("working towards a unit vector"):
+        \begin{equation}T\left(\vec{\mathbf v}_1+\vec{\mathbf v}_3\right)=\boxed{T\left(\begin{bmatrix}\blue 0\\2\\3\end{bmatrix}\right)=\begin{bmatrix}2\kappa\\13\\6\xi+8\end{bmatrix}}=T\left(\vec{\mathbf v}_1\right)+T\left(\vec{\mathbf v}_3\right)\end{equation}
+        Now, let's add two times the vector \(\begin{bmatrix} 0\\2\\3\end{bmatrix}\) to \(\vec{\mathbf v}_2=\begin{bmatrix}0\\-4\\2\end{bmatrix}\), such that the middle number becomes a zero:
+        $$T\left(2\cdot\begin{bmatrix} 0\\2\\3\end{bmatrix}+\begin{bmatrix}0\\-4\\2\end{bmatrix}\right)=\boxed{T\left(\begin{bmatrix}0\\\blue0\\8\end{bmatrix}\right)=
+        \begin{bmatrix}0\\40\\16\xi\end{bmatrix}}
+        =
+        2\cdot\begin{bmatrix}2\kappa\\13\\6\xi+8\end{bmatrix}+\begin{bmatrix}-4\kappa\\14\\4\xi-16\end{bmatrix}$$
+        From the boxed equation we now infer (dividing by \(8\)):
+        \begin{equation}T\left(\begin{bmatrix}0\\0\\1\end{bmatrix}\right)=
+        \red{\begin{bmatrix}0\\5\\2\xi\end{bmatrix}}\end{equation}
+        And that is the second unit vector whose image (under the transformation) we found! So, the red thing will be the third row of the matrix, because it is a unit vector of the third dimension.
+        <br><br>Now all we need to do is to find the image of the unit vector of the second dimension.
+        <br>
+        Using the result of equations ?? and ??, we can write
+        $$T\left(\begin{bmatrix} 0\\2\\3\end{bmatrix}-3\cdot\begin{bmatrix}0\\0\\1\end{bmatrix}\right)=\boxed{T\left(\begin{bmatrix}0\\2\\0\end{bmatrix}\right)=
+        \begin{bmatrix}2\kappa\\-2\\8\end{bmatrix}}
+        =
+        \begin{bmatrix}2\kappa\\13\\6\xi+8\end{bmatrix}-3\cdot\begin{bmatrix}0\\5\\2\xi\end{bmatrix}$$
+        Divide by \(2\) in the boxed equation to obtain the image of the unit vector of the second dimension:
+        $$T\left(\begin{bmatrix}0\\1\\0\end{bmatrix}\right)=
+        \red{\begin{bmatrix}\kappa\\-1\\4\end{bmatrix}}$$
+        Now that we found the images under the transformation of all three unit vectors, we can glue them together (the red vectors) in the correct order to obtain our matrix:
+        $$\boxed{\boxed{A=\begin{bmatrix}
+            3&\kappa&0\\
+            1&-1&5\\
+            2&4&2\xi
+            \end{bmatrix}}}$$
+
+            <br><br>
+<b>Solution (b):</b> TODO
     </body>
 </html>
