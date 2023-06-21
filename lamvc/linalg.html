@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+        <link rel="stylesheet" href=style.css>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+                                                                                                                                                                                          onload="renderMathInElement(document.body);"></script>
+    </head>
+    <body>
+
+
+        <a href="index.html">Go back</a>
+        <h1>Example question about linear transformations</h1>
+
+        <b>Question:</b> you are given a linear transformation \(T: \mathbb{R}^3\to\mathbb{R}^3\), with
+        \(\vec{\mathbf v}_1=\begin{bmatrix}1\\2\\3\end{bmatrix}\),
+        \(\vec{\mathbf v}_2=\begin{bmatrix}0\\-4\\2\end{bmatrix}\), 
+        \(\vec{\mathbf v}_3=\begin{bmatrix}-1\\0\\0\end{bmatrix}\),
+        \(\vec{\mathbf w}_1=\begin{bmatrix}2\kappa+3\\14\\6\xi+10\end{bmatrix}\),
+        \(\vec{\mathbf w}_2=\begin{bmatrix}-4\kappa\\14\\4\xi-16\end{bmatrix}\) and
+        \(\vec{\mathbf w}_3=\begin{bmatrix}-3\\-1\\-2\end{bmatrix}\),
+        where it is given that \(T({\vec{\mathbf{v}}_2})=\vec{\mathbf{w}}_1\), \(T({\vec{\mathbf{v}}_2})=\vec{\mathbf{w}}_2\) and \(T({\vec{\mathbf{v}}_3})=\vec{\mathbf{w}}_3\).
+        <br><br>
+        <b>(a):</b> Find the matrix \(A\) of this transformation (it should contain \(\kappa\) and \(\xi\)).
+
+        <hr>
+        <b>Solution (a):</b> In order to find the matrix corresponding to the transformation, a useful thing to do it to determine to which vectors the unit vectors map. In other words, we want to find out what are \(T\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right)\), \(T\left(\begin{bmatrix}0\\1\\0\end{bmatrix}\right)\) and \(T\left(\begin{bmatrix}0\\0\\1\end{bmatrix}\right)\).<br>(The matrix \(A\) will then consist of these three column vectors glued together in order.)
+
+        <br><br>
+        Let's start by observing that
+        \(\vec{\mathbf v}_3=\begin{bmatrix}-1\\0\\0\end{bmatrix}\),
+        is almost a unit vector.
+        <br>Since this is a linear transformation, we can say the following:
+        $$T\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right) = -T\left(\begin{bmatrix}-1\\0\\0\end{bmatrix}\right) = -T\left(\vec{\mathbf v}_3\right)=-\begin{bmatrix}-3\\-1\\-2\end{bmatrix}=\red{\begin{bmatrix}3\\1\\2\end{bmatrix}}$$
+        That's our first transformed unit vector! We now already know that the first column of \(A\) must be \(\begin{bmatrix}3\\1\\2\end{bmatrix}\)
+    </body>
+</html>
