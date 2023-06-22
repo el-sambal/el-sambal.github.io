@@ -24,7 +24,7 @@
         <br><br>
         <b>(a):</b> Find the matrix \(A\) of this transformation (it should contain \(\kappa\) and \(\xi\)).
         <br><br>
-        <b>(b):</b> TODO
+        <b>(b):</b> Take \(\kappa=\xi=0\) and find the eigenvalues of the matrix \(A\).
 
         <hr>
         <b>Solution (a):</b> In order to find the matrix corresponding to the transformation, a useful thing to do it to determine to which vectors the unit vectors map. In other words, we want to find out what are \(T\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right)\), \(T\left(\begin{bmatrix}0\\1\\0\end{bmatrix}\right)\) and \(T\left(\begin{bmatrix}0\\0\\1\end{bmatrix}\right)\).<br>(The matrix \(A\) will then consist of these three column vectors glued together in order.)
@@ -60,12 +60,30 @@
         \red{\begin{bmatrix}\kappa\\-1\\4\end{bmatrix}}$$
         Now that we found the images under the transformation of all three unit vectors, we can glue them together (the red vectors) in the correct order to obtain our matrix:
         $$\boxed{\boxed{A=\begin{bmatrix}
-            3&\kappa&0\\
-            1&-1&5\\
-            2&4&2\xi
-            \end{bmatrix}}}$$
+        3&\kappa&0\\
+        1&-1&5\\
+        2&4&2\xi
+        \end{bmatrix}}}$$
 
-            <br><br>
-<b>Solution (b):</b> TODO
+        <br><br>
+        <b>Solution (b):</b> Let's take \(\kappa=\xi=0\). The matrix \(A\) now becomes
+$$A=\begin{bmatrix}
+        3&0&0\\
+        1&-1&5\\
+        2&4&0
+        \end{bmatrix}$$
+        In order to find the eigenvalues, we must solve the equation \(\det(A-\lambda I)=0\). The solutions \(\lambda\) will be the eigenvalues.
+$$\det(A-\lambda I)=\det\begin{bmatrix}
+        3-\lambda&0&0\\
+        1&-1-\lambda&5\\
+        2&4&-\lambda
+        \end{bmatrix}=0$$
+
+        $$(3-\lambda)((-1-\lambda)(-\lambda) - (4)(5)) = 0$$
+        $$(3-\lambda)(\lambda^2+\lambda-20)=0$$
+        $$(3-\lambda)(\lambda-4)(\lambda+5)=0$$
+        So we get the eigenvalues
+        $$\boxed{\lambda_1=-5\quad\lambda_2=3\quad\lambda_3=4}$$
+
     </body>
 </html>
