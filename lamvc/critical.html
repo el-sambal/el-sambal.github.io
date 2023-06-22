@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+        <link rel="stylesheet" href=style.css>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+                                                                                                                                                                                          onload="renderMathInElement(document.body);"></script>
+    </head>
+    <body>
+        <a href="index.html">Go back</a>
+        <h1>Critical points</h1>
+        A function \(f(x,y)\) can have <i>local maxima</i>, <i>local minima</i> and/or <i>saddle points</i>. These points are also called <b>critical points / stationary points</b>.
+        <br><br>
+        To find critical points, you calculate \(f_x(x,y)\) and \(f_y(x,y)\). Then, all points for which both partial derivatives are zero, are the critical points. That is, a function \(f(x,y)\) has a critical point (or stationary point) at \((a,b)\) when \(f_x(a,b)=0\) and \(f_y(a,b)=0\).
+        <br><br>
+        When you found the critical point, you may want to classify it. This can be done using the second derivative test:
+        <div style="font-size:20px;border: 6px solid black;padding:8px;margin:8px;display:inline-block;border-radius:10px;background-color:lightyellow">
+            Suppose a function \(f(x,y)\) has a critical point at \((a,b)\). <br>Then we can calculate \(D=D(a,b)=f_{xx}(a,b)f_{yy}(a,b)-\left[f_{xy}(a,b)\right]^2\)
+
+            <ul style=text-align:left>
+
+                <li> If \(D>0\) and \(f_{xx}(a,b)>0\), then \((a,b)\) is a <b>local minimum</b></li>
+                <li> If \(D>0\) and \(f_{xx}(a,b)<0\), then \((a,b)\) is a <b>local maximum</b></li>
+                <li>If \(D<0\), then \((a,b)\) is a <b>saddle point</b></li>
+                <li> If \(D=0\), then the test is inconclusive</li>
+        </div>
+        <hr><hr>
+        <hr><hr>
+
+        <h2> Example 1 </h2>
+        <b>Question: find and classify the critical points of \(f(x,y)=2x^2+2xy+3y^2-4y\)</b>
+        <br><br>
+        <b>Solution:</b> we calculate both partial derivatives and set them equal to zero: \(f_x(x,y)=4x+2y\) and \(f_y(x,y)=2x+6y-4\); so we get the system of equations $$\begin{cases}4x+2y=0\\2x+6y=4\end{cases}$$ which has the (only) solution \(x=-\frac{2}{5},~y=\frac{4}{5}\).
+        <br><br>Therefore, the (only) critical point of \(f(x,y)\) is \(\boxed{\left(-\frac{2}{5},\frac{4}{5}\right)}\).
+        <br><br>
+        The question was to find and classify the critical points, so we also have to perform the second derivative test.
+        Let's calculate the second partial derivatives; they are \(f_{xx}(x,y)=4\), \(f_{yy}(x,y)=6\), \(f_{xy}(x,y)=2\).
+        Now we're pretty lucky, because those second partial derivatives don't even depend on \(x\) and \(y\) anymore. So we can easily calculate
+        $$\boxed{D=f_{xx}f_{yy}-[f_{xy}]^2=4\cdot6-2^2=20>0}$$
+        We also have, \(\boxed{f_{xx}(-\frac{2}{5},\frac{4}{5})=4>0}\).<br><br>
+        Therefore, with the second derivative test, we classify the critical point \({\left(-\frac{2}{5},\frac{4}{5}\right)}\) as a <b>local minimum</b>.
+        <hr>
+
+    </body>
+
+
+</html>
