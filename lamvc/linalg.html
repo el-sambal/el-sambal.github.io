@@ -24,7 +24,9 @@
         <br><br>
         <b>(a):</b> Find the matrix \(A\) of this transformation (it should contain \(\kappa\) and \(\xi\)).
         <br><br>
-        <b>(b):</b> Take \(\kappa=\xi=0\) and find the eigenvalues of the matrix \(A\).
+        <b>(b):</b> From now on, take \(\kappa=\xi=0\) and find the eigenvalues of the matrix \(A\).
+        <br><br>
+        <b>(c):</b> Find the eigenvectors of the matrix \(A\).
 
         <hr>
         <b>Solution (a):</b> In order to find the matrix corresponding to the transformation, a useful thing to do it to determine to which vectors the unit vectors map. In other words, we want to find out what are \(T\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right)\), \(T\left(\begin{bmatrix}0\\1\\0\end{bmatrix}\right)\) and \(T\left(\begin{bmatrix}0\\0\\1\end{bmatrix}\right)\).<br>(The matrix \(A\) will then consist of these three column vectors glued together in order.)
@@ -85,5 +87,72 @@ $$\det(A-\lambda I)=\det\begin{bmatrix}
         So we get the eigenvalues
         $$\boxed{\lambda_1=-5\quad\lambda_2=3\quad\lambda_3=4}$$
 
+        <br><br>
+        <b>Solution (c):</b> In order to find the eigenvectors, we have to substitute the eigenvalues in the equation \((A-\lambda I)\vec{\mathbf x}=\vec{\mathbf 0}\) and solve for \(\vec{\mathbf x}\).
+        <br><br>
+        Let's first do the calculation for the first eigenvalue, \(\lambda_1=-5\).
+        We then get the matrix \(A-(-5)I=\begin{bmatrix}
+        8&0&0\\
+        1&4&5\\
+        2&4&5
+        \end{bmatrix}\)
+        Since we are trying to solve \((A-\lambda I)\vec{\mathbf x}=\vec{\mathbf 0}\), we can set up the augmented matrix:
+        $$\begin{bmatrix}
+        8&0&0 &\mid& 0\\
+        1&4&5 &\mid& 0\\
+        2&4&5 &\mid& 0
+        \end{bmatrix}\sim\begin{bmatrix}
+        8&0&0 &\mid& 0\\
+        0&4&5 &\mid& 0\\
+        0&4&5 &\mid& 0
+        \end{bmatrix}\sim\begin{bmatrix}
+        8&0&0 &\mid& 0\\
+        0&4&5 &\mid& 0\\
+        0&0&0 &\mid& 0
+        \end{bmatrix}$$
+        This results in the eigenvectors <span style=color:purple>\({t\begin{bmatrix}0\\5\\-4\end{bmatrix}}\) for all \(t\in\mathbb{R}\).</span>
+
+        <br><br>
+        Let's now do the calculation for the second eigenvalue, \(\lambda_2=3\).
+        We then get the matrix \(A-3I=\begin{bmatrix}
+        0&0&0  \\
+        1&-4&5 \\
+        2&4&-3
+        \end{bmatrix}\)
+        The augmented matrix becomes
+        $$\begin{bmatrix}
+        0&0&0  &\mid& 0\\
+        1&-4&5 &\mid& 0\\
+        2&4&-3 &\mid& 0
+        \end{bmatrix}\sim\begin{bmatrix}
+        0&0&0  &\mid& 0\\
+        1&-4&5 &\mid& 0\\
+        3&0&2 &\mid& 0
+        \end{bmatrix}\sim\begin{bmatrix}
+        0&0&0  &\mid& 0\\
+        3&-12&15 &\mid& 0\\
+        3&0&2 &\mid& 0
+        \end{bmatrix}\sim\begin{bmatrix}
+        0&0&0  &\mid& 0\\
+        0&-12&13 &\mid& 0\\
+        3&0&2 &\mid& 0
+        \end{bmatrix}$$
+        By setting for example \(x_3\) free and solving for the others, we get the eigenvectors \(x_3\begin{bmatrix}-2/3\\13/12\\1\end{bmatrix}\) for all \(x_3\in\mathbb{R}\).
+        Those eigenvectors can be written more nicely as <span style=color:purple>\({t\begin{bmatrix}-8\\13\\12\end{bmatrix}}\) for all \(t\in\mathbb R\)</span>.
+        <br><br>
+        Finally, let us consider the eigenvectors corresponding to the third eigenvalue \(\lambda_3=4\). This time we get
+        $$\begin{bmatrix}
+        -1&0&0  &\mid& 0\\
+        1&-5&5 &\mid& 0\\
+        2&4&-4 &\mid& 0
+        \end{bmatrix}\sim\begin{bmatrix}
+        -1&0&0  &\mid& 0\\
+        0&-5&5 &\mid& 0\\
+        0&4&-4 &\mid& 0
+        \end{bmatrix}$$
+        From which we get the eigenvectors <span style=color:purple>\({t\begin{bmatrix}0\\1\\1\end{bmatrix}}\) for all \(t\in\mathbb R\)</span>.
+        <br><br> We now did the calculations for all three eigenvalues. We can now conclude that the eigenvectors are the vectors
+        $$\boxed{\boxed{\vec{\mathbf u}_1=\begin{bmatrix}0\\5\\-4\end{bmatrix}, \vec{\mathbf u}_2=\begin{bmatrix}-8\\13\\12\end{bmatrix}, \vec{\mathbf u}_3=\begin{bmatrix}0\\1\\1\end{bmatrix}}}$$
+        <b>Any constant multiple of one of these vectors is also an eigenvector!</b>
     </body>
 </html>
