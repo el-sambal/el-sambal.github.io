@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+        <link rel="stylesheet" href=style.css>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+                                                                                                                                                                                          onload="renderMathInElement(document.body);"></script>
+    </head>
+    <body>
+        <a href="index.html">Go back</a>
+        <h1>Summary</h1>
+        This page lists some concepts that I find important about linear algebra and multivariable calculus.
+        This page does not contain everything you need to know for an exam. It also skips some basic stuff like row reduction. As a diclaimer, there could be mistakes in it.
+
+        <br><br>
+        About linear algebra:
+
+        <br><br>
+        These statements are equivalent for a (square) matrix \(A\):
+        \begin{align}
+        &\det A\neq0\nonumber\\
+        \iff&\nonumber\\
+        &\text{$A$ is invertible}\nonumber\\
+        \iff&\nonumber\\
+        &\text{The columns of $A$ are linearly independent}\nonumber\\
+        \iff&\nonumber\\
+        &\text{The equation \(A\vec{\mathbf x} = \vec{\mathbf b}\) has exactly one solution for all \(\vec{\mathbf{b}}\)}\nonumber\\
+        \end{align}
+        So, for a given square matrix \(A\), the <b>above statements are either all true or all false</b>.
+        <br><br>
+        If \(A\) and \(B\) are \(n\times n\)-matrices, we have that
+            $$\det AB = (\det A)(\det B)$$
+            $$\det A^T = \det A$$
+            $$AA^{-1}=A^{-1}A=I$$
+            <br><br>
+            To find the inverse of \(A\), you take the augmented matrix \([A ~\mid~ I]\) and row reduce it until the left side is the identity matrix. The right side will then be \(A^{-1}\), that is, after row reduction you get \([I ~\mid~ A^{-1}]\), the right side of which is the inverse of \(A\).
+            <br><br>
+        The determinant of a triangular matrix is the product of the numbers on its diagonal.
+        <br>
+        (A matrix is triangular if all the entries either above or below the main diagonal are zero.)
+        <br><br><br>
+        Here are some funny rules about the determinant (for a square matrix \(A\)):
+        <br>
+        \(\rightsquigarrow\) If you add a multiple of one row to another row, the determinant <b>does not change</b><br>
+        \(\rightsquigarrow\) If you swap two rows, the determinant <b>swaps sign</b><br>
+        \(\rightsquigarrow\) If you multiply the entries of one row with a constant \(k\), the determinant also <b>scales with \(k\)</b><br>
+        <br><br><br>
+        If you know that \(A\begin{bmatrix}1\\0\\0\end{bmatrix}=\textcolor{31B84B}{\begin{bmatrix}a\\d\\g\end{bmatrix}}\), \(~A\begin{bmatrix}0\\1\\0\end{bmatrix}=\textcolor{F9B300}{\begin{bmatrix}b\\e\\h\end{bmatrix}}\)
+        and \(~A\begin{bmatrix}0\\0\\1\end{bmatrix}=\red{\begin{bmatrix}c\\f\\i\end{bmatrix}}\),
+         then you know that \(A=\left[
+\textcolor{31B84B}{\begin{matrix}a\\d\\g\end{matrix}}~~~~~
+\textcolor{F9B300}{\begin{matrix}b\\e\\h\end{matrix}}~~~~~
+\red{\begin{matrix}c\\f\\i\end{matrix}}
+         \right]\)
+
+
+         <br><br><br>
+         An <i>eigenvector</i> of a linear transformation is a vector that is only scaled by a constant factor (the <i>eigenvalue</i>) after being transformed.
+         <br>
+         First you have to find the eigenvalues \(\lambda\) by solving the equation \(\det(A-\lambda I)=0\). After you found the eigenvalues, you have to substitute the eigenvalues in the equation \((A-\lambda I)\vec{\mathbf x}=\vec{\mathbf 0}\) and solve for \(\vec{\mathbf x}\) to find the corresponding eigenvectors.
+
+         <br><br>
+         Sometimes you can <i>diagonalize</i> a matrix \(A\). That means: you can write \(A=PDP^{-1}\). In this case, \(D\) is a diagonal matrix, and its entries on the diagonal should be the eigenvalues of \(A\). Then, the columns of \(P\) should be the eigenvectors of \(A\), which correspond in the same order to the eigenvalues that are in \(D\). The benefit of diagonalizing is that it is easier to compute powers of \(A\): \(\boxed{A^k=PD^kP^{-1}}\). (Raising \(D\) to a high power is easy, you just raise all it's diagonal entries to that power)
+
+         <br><br>
+         In general, every matrix corresponds to a linear transformation.
+         When you have, say, a linear transformation \(T_1\) with matrix \(A\) and a a linear transformation \(T_2\) with matrix \(B\), then the composite linear transformation given by \(T(\vec{\mathbf x})=T_2(T_1(\vec{\mathbf x}))\) has a matrix \(C=BA\). This means that you first apply \(T_1\) and then \(T_2\). But you multiply the matrices in the opposite order. Be aware of that! (In this case, "you read from right to left")
+         <br><br>
+         The "image" of a vector under a linear transformation means: the "output" of that linear transformation when you "input" that vector.
+
+         <br><br>
+         Also, the angle \(\phi\) between two vectors \(\vec{\mathbf{u}}\) and \(\vec{\mathbf{v}}\) can be given by:
+         $$\large\phi=\arccos\frac{\vec{\mathbf{u}}\cdot\vec{\mathbf{v}}}{|\vec{\mathbf{u}}||\vec{\mathbf{v}}|}$$
+         From this, we see that two vectors are orthogonal if and only if their dot product is zero.
+
+        <br><br>
+        About multivariable calculus: TODO. Some topics of multivariable calculus are discussed on other places in this website.
+    </body>
+
+
+</html>
