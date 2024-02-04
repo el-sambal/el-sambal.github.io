@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
-        <link rel="stylesheet" href=../style.css>
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-                                                                                                                                                                                          onload="renderMathInElement(document.body);"></script>
 
-        <script>
-            function onBodyLoad() {
-                            setTimeout(
-                                            function() {
-                                                            document.getElementById('gl').style.display='inline';
-                                                        }, 100000);
-                        }
-        </script>
-    </head>
-    <body onload=onBodyLoad()>
-        <a href="../index.html">Go back</a>
-        <h1>What are you looking for?</h1>
-            <a href="linalg.html">Example question on LINEAR ALGEBRA</a>
-            <br><br>
-            <a href="critical.html">Notes on CRITICAL POINTS</a>
-            <br><br>
-            <a href="cartesian.html">Notes on double integrals in CARTESIAN COORDINATES</a>
-            <br><br>
-            <a href="polar.html">Notes on double integrals in POLAR COORDINATES</a>
-            <br><br>
-            <a href="spherical.html">(Notes on triple integrals in SPHERICAL COORDINATES)</a>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+        integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+    <link rel="stylesheet" href=../style.css>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+        integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
-            <br><br><br>
-            <a href="cheatsheet.html">(Unorganized) CHEAT SHEET</a>
-            <br><br><br><image id=gl style=display:none src="smile-gl.png" width=700/><br>
-    </body>
+    <script>
+        function onBodyLoad() {
+            setTimeout(
+                function () {
+                    document.getElementById('gl').style.display = 'inline';
+                }, 100000);
+        }
+    </script>
+</head>
+
+<body onload=onBodyLoad()>
+    <a href="../index.html">Go back</a>
+    <h1>What are you looking for?</h1><br>
+    <h2>Multivariable Calculus Topics</h2>
+    <a href="critical.html">Notes on CRITICAL POINTS</a>
+    <br><br>
+    <a href="cartesian.html">Notes on double integrals in CARTESIAN COORDINATES</a>
+    <br><br>
+    <a href="polar.html">Notes on double integrals in POLAR COORDINATES</a>
+    <br><br>
+    <a href="spherical.html">Notes on triple integrals in SPHERICAL COORDINATES</a>
+
+    <br><br>
+    <h2>Linear algebra topics (very incomplete)</h2>
+    <a href="linalg.html">Example question on LINEAR ALGEBRA</a>
+    <br><br>
+    <a href="cheatsheet.html">(Unorganized) CHEAT SHEET</a>
+    <br><br><br>
+    <image id=gl style=display:none src="smile-gl.png" width=700 /><br>
+</body>
+
 </html>

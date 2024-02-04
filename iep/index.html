@@ -19,13 +19,16 @@
 </head>
 
 <body style="text-align:center;padding-left:200px;padding-right:200px;">
+  <a href="../index.html">Go back</a>
   <h1>On derangements and the inclusion-exclusion principle</h1>
-  <strong>Question:</strong> Hector wrote down the first \(n\) positive integers in a random order, and so did Hessel.
-  Both thus have a sequence of \(n\) integers. What is the probability that Hector and Hessel did not write the same
-  number in the same position in the sequence anywhere?
+  <strong style="font-size: 24px; color: #940940">Question: Hector wrote down the first \(n\) positive integers in a
+    random order, and so did Hessel.
+    Both thus have a sequence of \(n\) integers. What is the probability that Hector and Hessel did not write the same
+    number in the same position in the sequence anywhere?</strong>
 
   <br><br><br>
-  <strong>Partial answer:</strong> as \(n\) grows large, the probability approaches \(1/e\). (wtf?)
+  <div style="color: purple"><strong>Partial answer:</strong> as \(n\) grows large, the probability approaches \(1/e\).
+    (wtf?)</div>
 
   <br>
   <br>
@@ -102,13 +105,16 @@
   \end{align}
 
   By the way, apparently (i.e. according to <a href=https://en.wikipedia.org/wiki/Derangement>Wikipedia</a>), this
-  series converges so quickly that one can even say \[!n=\left\lfloor\frac{n!}{e}+\frac{1}{2}\right\rfloor \quad\forall
+  series converges so quickly that one can even say \[!n=\texttt{round}\left(\frac{n!}{e}\right) \quad\forall
   i\in\mathbb{N^+}\]
-  which means that
-  \[\mathbb{P}(\texttt{der}_n)=\frac{1}{n!}\left\lfloor\frac{n!}{e}+\frac{1}{2}\right\rfloor\quad\forall
-  i\in\mathbb{N^+}\]
+  where \(\texttt{round}(\cdot)\) denotes the nearest integer function.
   
   The proof of this is, uhm, obvious, and left as an exercise to the reader.
+  This means that we can say
+  \[\boxed{\mathbb{P}(\texttt{der}_n)=\frac{1}{n!}\,\texttt{round}\left(\frac{n!}{e}\right)\quad\forall
+  i\in\mathbb{N^+}}\]
+  as well.
+
 </body>
 
 </html>
