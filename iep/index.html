@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly -->
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+    integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href=../style.css>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+    integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+</head>
+
+<body style="text-align:center;padding-left:200px;padding-right:200px;">
+  <h1>On derangements and the inclusion-exclusion principle</h1>
+  <strong>Question:</strong> Hector wrote down the first \(n\) positive integers in a random order, and so did Hessel.
+  Both thus have a sequence of \(n\) integers. What is the probability that Hector and Hessel did not write the same
+  number in the same position in the sequence anywhere?
+
+  <br><br><br>
+  <strong>Partial answer:</strong> as \(n\) grows large, the probability approaches \(1/e\). (wtf?)
+
+  <br>
+  <br>
+  <br>
+  <strong>Solution:</strong>
+  first, observe that this question is equivalent to asking,
+  "what is the probability that in a sequence \(s_1,s_2,s_3,\dots,s_n\),
+  containing the integers \(1\) up to and including \(n\) in random order,
+  there is no \(i\in\set{1,2,3,\dots,n}\) such that \(s_i=i\)?"
+
+  Actually, such a sequence is called a <em>derangement</em>. Let \(!n\) denote the number of derangements of length
+  \(n\). Let \(\mathbb{P}(\texttt{der}_n)\) denote the probability that a sequence containing the numbers \(1\) up to
+  and including \(n\) in random order is a derangement. Then the probability we want to compute, is
+  \[\mathbb{P}(\texttt{der}_n)=\frac{!n}{n!}\]
+
+  It becomes clear that we need to find a way to calculate \(!n\).
+
+  <br><br><br>
+  In order to do this, we use the <em>inclusion-exclusion principle</em>, which states that for all
+  \(n\in\mathbb{N}_0\) for all finite sets \(A_1,A_2,\dots,A_n\) we have:
+  \[\left|{\bigcup_{i=1}^nA_i}\right|=\sum_{\emptyset\neq J\subseteq\set{1,\dots,n}}(-1)^{|J|+1}\left|{\bigcap_{j\in
+  J}A_j}\right|\]
+
+  By the way, let's define an <em>\(n\)-sequence</em> to mean "a sequence \(s_1,s_2,\dots,s_n\) of length n containing
+  the numbers
+  \(1,2,\dots,n\)". Now, consider we have some \(n\) and wish to compute the number of \(n\)-sequences
+  that are <em>not</em> a derangement. That is, we wish to compute \(n!\,-\,!n\).
+
+  <br><br><br>
+  Here comes the trick: let \(A_i\) be the set of \(n\)-sequences that have \(s_i=i\). Clearly, we then have
+  \begin{align}
+  n!\,-\,!n&=\left|{\bigcup_{i=1}^nA_i}\right|\nonumber\\[1.5em]
+  &\quad\texttt{// by inclusion-exclusion principle}\nonumber\\
+  &=\sum_{\emptyset\neq J\subseteq\set{1,\dots,n}}(-1)^{|J|+1}\left|{\bigcap_{j\in
+  J}A_j}\right|\nonumber\\[1.7em]
+  &\quad\texttt{// rewriting a bit}\nonumber\\
+  &=\sum_{i=1}^n\sum_{\substack{\emptyset\neq J\subseteq\set{1,\dots,n}\\[0.25em]|J|=i}}(-1)^{i+1}\left|{\bigcap_{j\in
+  J}A_j}\right|\nonumber\\[1.7em]
+  \end{align}
+
+  Observe now the following. \(\left|{\bigcap_{j\in J}A_j}\right|\) denotes the number of
+  \(n\)-sequences which have, for all \(j\in J\), \(s_j=j\). If the cardinality of \(J\) is \(i\), then the cardinality
+  of this intersection must be equal to \((n-i)!\), because we are effectively counting in how many ways we can arrange
+  the \(n-i\) numbers that are not already "in a fixed position" in the \(n\)-sequence. Hence we find
+
+  \[n!\,-\,!n=\sum_{i=1}^n\sum_{\substack{\emptyset\neq J\subseteq\set{1,\dots,n}\\[0.25em]|J|=i}}(-1)^{i+1}(n-i)!\]
+
+  Now, observe that \((-1)^{i+1}(n-i)!\) is not dependent on \(J\) anymore, but only on the cardinality of \(J\).
+  Knowing that for \(i\in\set{1,\dots,n}\) the number of subsets \(J\subseteq\set{1,2,\dots,n}\) of cardinality \(i\) is
+  equal to \({n\choose i}=\frac{n!}{i!(n-i)!}\),
+  we find that
+
+  \begin{align}
+  n!\,-\,!n&=\sum_{i=1}^n{n\choose i}(-1)^{i+1}(n-i)!\nonumber\\
+  &=\sum_{i=1}^n(-1)^{i+1}\frac{n!}{i!}\nonumber
+  \end{align}
+
+  We're not going to get this even more simplified. So, let's go back to the original problem.
+  The probabilty that we wanted to compute is
+  \begin{align}
+  \mathbb{P}(\texttt{der}_n)&=\frac{!n}{n!}\\
+  &=\frac{n!-\sum_{i=1}^n(-1)^{i+1}\frac{n!}{i!}}{n!}\\
+  &={1-\sum_{i=1}^n\frac{(-1)^{i+1}}{i!}}\\
+  &=\boxed{\sum_{i=0}^n\frac{(-1)^{i}}{i!}}
+  \end{align}
+
+  That is the answer. The is one more curiosity: recall that the Taylor expansion of \(e^x\) is given by
+  \[e^x=\sum_{i=0}^\infty\frac{x^i}{i!}\]
+
+  We can use this to find an interesting result:
+
+  \begin{align}
+  \boxed{\lim\limits_{n\to\infty}\mathbb{P}(\texttt{der}_n)=e^{-1}}
+  \end{align}
+
+  By the way, apparently (i.e. according to <a href=https://en.wikipedia.org/wiki/Derangement>Wikipedia</a>), this
+  series converges so quickly that one can even say \[!n=\left\lfloor\frac{n!}{e}+\frac{1}{2}\right\rfloor \quad\forall
+  i\in\mathbb{N^+}\]
+  which means that
+  \[\mathbb{P}(\texttt{der}_n)=\frac{1}{n!}\left\lfloor\frac{n!}{e}+\frac{1}{2}\right\rfloor\quad\forall
+  i\in\mathbb{N^+}\]
+  
+  The proof of this is, uhm, obvious, and left as an exercise to the reader.
+</body>
+
+</html>
