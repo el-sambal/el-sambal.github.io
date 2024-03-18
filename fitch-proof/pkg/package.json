@@ -1,0 +1,14 @@
+{
+  "name": "fitch-proof",
+  "version": "0.1.0",
+  "files": [
+    "fitch_proof_bg.wasm",
+    "fitch_proof.js",
+    "fitch_proof.d.ts"
+  ],
+  "module": "fitch_proof.js",
+  "types": "fitch_proof.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

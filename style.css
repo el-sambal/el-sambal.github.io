@@ -15,3 +15,12 @@ hr {
     border: 2px solid orange;
     margin: 20px;
 }
+
+.code-block {
+    font-size: 22px;
+    background-color:deepskyblue;
+    text-align: left;
+    padding: 10px;
+    border: 10px solid black;
+    border-radius: 10px;
+}
