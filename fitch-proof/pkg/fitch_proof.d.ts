@@ -37,6 +37,11 @@ export function format_proof(proof: string): string;
 * @returns {string}
 */
 export function fix_line_numbers_in_proof(proof: string): string;
+/**
+* @param {string} proof
+* @returns {string}
+*/
+export function export_to_latex(proof: string): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -45,6 +50,7 @@ export interface InitOutput {
   readonly check_proof: (a: number, b: number, c: number, d: number, e: number) => void;
   readonly format_proof: (a: number, b: number, c: number) => void;
   readonly fix_line_numbers_in_proof: (a: number, b: number, c: number) => void;
+  readonly export_to_latex: (a: number, b: number, c: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
