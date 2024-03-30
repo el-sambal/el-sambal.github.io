@@ -83,6 +83,15 @@ function getStringFromWasm0(ptr, len) {
     return cachedTextDecoder.decode(getUint8Memory0().subarray(ptr, ptr + len));
 }
 /**
+* Checks if a string is a fully correct proof.
+*
+* If the string corresponds to a fully correct proof, then a string will be returned,
+* saying that the proof is correct.
+*
+* If the proof is not correct, then a string is returned which (hopefully) contains a nice error
+* message.
+*
+* This function never panics.
 * @param {string} proof
 * @param {string} allowed_variable_names
 * @returns {string}
@@ -109,6 +118,12 @@ export function check_proof(proof, allowed_variable_names) {
 }
 
 /**
+* Takes in a proof string as input, and tries to format that proof.
+*
+* If formatting succeeds, the formatted string is returned. If formatting fails, the original
+* string is returned.
+*
+* This function never panics.
 * @param {string} proof
 * @returns {string}
 */
@@ -120,6 +135,35 @@ export function format_proof(proof) {
         const ptr0 = passStringToWasm0(proof, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
         const len0 = WASM_VECTOR_LEN;
         wasm.format_proof(retptr, ptr0, len0);
+        var r0 = getInt32Memory0()[retptr / 4 + 0];
+        var r1 = getInt32Memory0()[retptr / 4 + 1];
+        deferred2_0 = r0;
+        deferred2_1 = r1;
+        return getStringFromWasm0(r0, r1);
+    } finally {
+        wasm.__wbindgen_add_to_stack_pointer(16);
+        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+    }
+}
+
+/**
+* This function fixes the line numbers in a proof (in case they are not proper).
+*
+* If fixing the line numbers succeeds, the fixed string is returned. If it fails, the original
+* string is returned.
+*
+* This function never panics.
+* @param {string} proof
+* @returns {string}
+*/
+export function fix_line_numbers_in_proof(proof) {
+    let deferred2_0;
+    let deferred2_1;
+    try {
+        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+        const ptr0 = passStringToWasm0(proof, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        wasm.fix_line_numbers_in_proof(retptr, ptr0, len0);
         var r0 = getInt32Memory0()[retptr / 4 + 0];
         var r1 = getInt32Memory0()[retptr / 4 + 1];
         deferred2_0 = r0;

@@ -9,7 +9,7 @@
    <a href="https://github.com/el-sambal/fitch-proof"
       style="color:yellow;text-decoration: none;font-family:monospace">https://github.com/el-sambal/fitch-proof</a><br><br>
    <script type="module">
-      import init, { check_proof, format_proof } from './pkg/fitch_proof.js';
+      import init, { check_proof, format_proof, fix_line_numbers_in_proof } from './pkg/fitch_proof.js';
       export async function run() {
          await init();
 
@@ -35,6 +35,12 @@
          run();
       }
 
+      function fix_line_numbers() {
+         let fixed = fix_line_numbers_in_proof(document.getElementById("proof-field").value);
+         document.getElementById("proof-field").value = fixed;
+         run();
+      }
+
       let advanced_settings_are_visible = false;
       function toggle_show_advanced_settings() {
          advanced_settings_are_visible = !advanced_settings_are_visible;
@@ -49,6 +55,7 @@
 
       document.getElementById("proof-field").onkeyup = run;
       document.getElementById("format-button").onclick = format;
+      document.getElementById("fix-line-numbers-button").onclick = fix_line_numbers;
       document.getElementById("settings-button").onclick = toggle_show_advanced_settings;
       document.getElementById("allowed-variable-names").onkeyup = run;
       run();
@@ -136,8 +143,9 @@
    <br>
    <br>
 
-   <button id="format-button" style="padding: 9px 9px">FORMAT PROOF</button>
-   <button id="settings-button" style="padding: 9px 9px">SHOW/HIDE SETTINGS</button>
+   <button id="format-button" style="padding: 9px 9px" title="Make your proof more beautiful!">FORMAT PROOF</button>
+   <button id="fix-line-numbers-button" style="padding: 9px 9px" title="Fix the line numbers in a proof, and automatically update justifications. For example, suppose you want to delete a line in the middle of your proof. In that case, you can just delete that line and press this button afterwards, which will fix up the line numbers. If you want to insert a line in the middle of your proof, just initially give it a line number of 100 or so, and click this button afterwards.">FIX LINE NUMBERS</button>
+   <button id="settings-button" style="padding: 9px 9px" title="Toggle visibility of the settings">SHOW/HIDE SETTINGS</button>
 
    <br>
    <br>
