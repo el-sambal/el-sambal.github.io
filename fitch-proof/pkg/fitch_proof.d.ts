@@ -6,12 +6,18 @@
 * @returns {string}
 */
 export function check_proof(proof: string, allowed_variable_names: string): string;
+/**
+* @param {string} proof
+* @returns {string}
+*/
+export function format_proof(proof: string): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly check_proof: (a: number, b: number, c: number, d: number, e: number) => void;
+  readonly format_proof: (a: number, b: number, c: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
