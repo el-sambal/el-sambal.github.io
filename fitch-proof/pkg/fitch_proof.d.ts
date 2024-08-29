@@ -16,6 +16,22 @@
 */
 export function check_proof(proof: string, allowed_variable_names: string): string;
 /**
+* Checks if a string is a fully correct proof that matches a given proof template.
+*
+* If the string corresponds to a fully correct proof, then a string will be returned,
+* saying that the proof is correct.
+*
+* If the proof is not correct, or does not match the template,
+* then a string is returned which contains a nice error message.
+*
+* This function never panics.
+* @param {string} proof
+* @param {(string)[]} template
+* @param {string} allowed_variable_names
+* @returns {string}
+*/
+export function check_proof_with_template(proof: string, template: (string)[], allowed_variable_names: string): string;
+/**
 * Takes in a proof string as input, and tries to format that proof.
 *
 * If formatting succeeds, the formatted string is returned. If formatting fails, the original
@@ -48,12 +64,13 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly check_proof: (a: number, b: number, c: number, d: number, e: number) => void;
+  readonly check_proof_with_template: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => void;
   readonly format_proof: (a: number, b: number, c: number) => void;
   readonly fix_line_numbers_in_proof: (a: number, b: number, c: number) => void;
   readonly export_to_latex: (a: number, b: number, c: number) => void;
-  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
 }
 
